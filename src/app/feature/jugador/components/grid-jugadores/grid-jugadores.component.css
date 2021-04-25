@@ -1,0 +1,50 @@
+body{
+    overflow-x: hidden;
+ }
+
+p {
+  margin-top: 0;
+  margin-bottom: 0rem;
+}
+
+.justify-content-end{
+  margin: auto;
+}
+
+.card-img, .card-img-top{
+width: 40%;
+align-self: center;
+margin-top: 5%;
+}
+
+.align-card-top{
+    margin-top: 1%;
+}
+
+.ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+  }
+  
+  .ribbon span {
+    position: absolute;
+    display: block;
+    width: 105px;
+    padding: 3px 0;
+    background-color: #c9eeff;
+    color: #3b90e6;
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: 400;
+  }
+  
+  .ribbon-top-right {
+    top: 0;
+    right: -31px;
+  }
+  
+  .ribbon-top-right span {
+    left: 14px;
+  }

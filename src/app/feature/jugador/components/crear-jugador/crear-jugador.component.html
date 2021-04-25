@@ -1,0 +1,131 @@
+<div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Crear Jugador</h4>
+          <form class="form p-t-20" [formGroup]="jugadorForm" (ngSubmit)="crearJugador()" #ngForm="ngForm">  
+            <div class="row">
+              <div class="col">
+                <label for="nombre">Nombre:</label>
+                <input formControlName="nombre" name="nombre" id="nombre" type="text" class="form-control" required>
+                <div class="form-control-feedback text-danger"
+                  *ngIf="erroresService.errores(jugadorForm, 'nombre', ngForm).hayErrores">
+                  Debe ingresar un nombre
+                </div>
+              </div>  
+              <div class="col">
+                <label for="numeroIdentificacion">Número de identificación:</label>
+                <input formControlName="numeroIdentificacion" name="numeroIdentificacion" id="numeroIdentificacion" type="number" class="form-control" required>
+                <div class="form-control-feedback text-danger"
+                  *ngIf="erroresService.errores(jugadorForm, 'numeroIdentificacion', ngForm).hayErrores">
+                  Debe ingresar un número de identificación
+                </div>                
+              </div>
+              <div class="col">
+                <label for="edad">Edad:</label>
+                <input formControlName="edad" name="edad" id="edad" type="number" class="form-control" required>
+                <div class="form-control-feedback text-danger"
+                  *ngIf="erroresService.errores(jugadorForm, 'edad', ngForm).hayErrores">
+                  Debe ingresar la edad
+                </div>                
+              </div>
+              <div class="col">
+                <label for="edad">Valorización $:</label>
+                <input formControlName="valorizacion" name="valorizacion" id="valorizacion" type="number" class="form-control" required>
+                <div class="form-control-feedback text-danger"
+                  *ngIf="erroresService.errores(jugadorForm, 'valorizacion', ngForm).hayErrores">
+                  Debe ingresar la valorizacion
+                </div>                
+              </div>
+
+            </div>
+  
+            <br>  
+            <div class="row">
+                <div class="col">
+                    <label for="fechaInicioTemporada">Fecha inicio temporada:</label>
+                    <input formControlName="fechaInicioTemporada" name="fechaInicioTemporada" id="fechaInicioTemporada" type="date"
+                      placeholder="yyy-mm-dd" class="form-control" required>
+                    <div class="form-control-feedback text-danger"
+                      *ngIf="erroresService.errores(jugadorForm, 'fechaInicioTemporada', ngForm).hayErrores">
+                      Debe ingresar una fecha inicio temporada
+                    </div>
+                </div>  
+                <div class="col">
+                    <label for="fechaFinTemporada">Fecha fin temporada:</label>
+                    <input formControlName="fechaFinTemporada" name="fechaFinTemporada" id="fechaFinTemporada" type="date"
+                    placeholder="yyy-mm-dd" class="form-control" required>
+                    <div class="form-control-feedback text-danger"
+                    *ngIf="erroresService.errores(jugadorForm, 'fechaFinTemporada', ngForm).hayErrores">
+                    Debe ingresar una fecha fin temporada
+                    </div>
+                </div>
+              <div class="col"> 
+                <label for="fechaValorizacion">Fecha valorizacion:</label>
+                <input formControlName="fechaValorizacion" name="fechaValorizacion" id="fechaValorizacion" type="date"
+                    placeholder="yyy-mm-dd" class="form-control" required>
+                <div class="form-control-feedback text-danger"
+                    *ngIf="erroresService.errores(jugadorForm, 'fechaValorizacion', ngForm).hayErrores">
+                    Debe ingresar una fecha valorizacion
+                </div>
+              </div>
+              <div class="col">
+                <label for="equipoFutbol">Equipo de futbol:</label>
+                <input formControlName="equipoFutbol" name="equipoFutbol" id="equipoFutbol" type="text" class="form-control"
+                  required>
+                <div class="form-control-feedback text-danger"
+                  *ngIf="erroresService.errores(jugadorForm, 'equipoFutbol', ngForm).hayErrores">
+                  Debe ingresar el equipo de futbol
+                </div>
+              </div>
+            </div>  
+            <br>  
+            <div class="row">
+              <div class="col">
+                <label for="minutosJugados">Minutos jugados:</label>
+                <input formControlName="minutosJugados" name="minutosJugados" id="minutosJugados" type="number" class="form-control" required>
+                <div class="form-control-feedback text-danger"
+                  *ngIf="erroresService.errores(jugadorForm, 'minutosJugados', ngForm).hayErrores">
+                  Debe ingresar los minutos jugados
+                </div>
+              </div>
+              <div class="col">
+                <label for="torneoGanados">Torneos ganados:</label>
+                <input formControlName="torneoGanados" name="torneoGanados" id="torneoGanados" type="number" class="form-control" required>
+                <div class="form-control-feedback text-danger"
+                  *ngIf="erroresService.errores(jugadorForm, 'torneoGanados', ngForm).hayErrores">
+                  Debe ingresar los torneos ganados
+                </div>                
+              </div>
+              <div class="col">
+                <label for="goles">goles anotados:</label>
+                <input formControlName="goles" name="goles" id="goles" type="number" class="form-control" required>
+                <div class="form-control-feedback text-danger"
+                  *ngIf="erroresService.errores(jugadorForm, 'goles', ngForm).hayErrores">
+                  Debe ingresar los goles anotados
+                </div>
+              </div>
+              <div class="col">
+                <label for="calificacion">Calificación:</label>
+                <input formControlName="calificacion" name="calificacion" id="calificacion" type="text" class="form-control"
+                  required>
+                <div class="form-control-feedback text-danger"
+                  *ngIf="erroresService.errores(jugadorForm, 'calificacion', ngForm).hayErrores">
+                  Debe ingresar la Calificación
+                </div>
+              </div>
+            </div>
+  
+            <div class="row mt-2">
+              <button type="button" class="btn btn-danger mr-2" (click)="regresar()">
+                <i class="fa fa-undo"></i> Regresar
+              </button>
+              <button type="submit" class="btn btn-primary" id="registrar">
+                <i class="fa fa-save"></i> Registrar
+              </button>
+            </div>  
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

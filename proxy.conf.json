@@ -1,0 +1,9 @@
+{
+    "/adn/*": {
+      "target": "http://localhost:8888",
+      "secure" : false,
+      "logLevel": "debug",
+      "pathRewrite": {"^/adn" : ""},
+      "changeOrigin": true
+    }
+}

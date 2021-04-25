@@ -1,0 +1,11 @@
+.card-img, .card-img-top{
+    width: 18%;
+    align-self: center;
+    margin-top: 5%;
+    margin: auto;
+}
+
+.align-img{
+    margin: auto;
+    margin-top: 2%;
+}

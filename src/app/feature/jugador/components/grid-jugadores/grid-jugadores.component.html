@@ -1,0 +1,23 @@
+<div class=" row justify-content-end">
+    <button class="btn btn-primary" (click)="crearJugador();" id="linkCrearJugador">
+      <i class="fa fa-plus"></i> Crear Jugador
+    </button>
+  </div>
+<div class="row align-card-top">
+    <div class="col-md-3 mb-5" *ngFor="let jugador of jugadores | async">  
+        <div class="card" (click)="verDetalles(jugador)" [id]="'linkVerDetalles'+ jugador.idJugador">
+            <div class="ribbon ribbon-top-right" (click)="verDetalles(jugador)">
+                <a><span>Ver detalle</span></a>
+            </div>
+            <img src="assets/png/jugador-de-futbol.png" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Valor: {{ jugador.valorizacion | currency:'$':'symbol' }}</h5>
+              <p class="card-text"><strong>Nombre:</strong> {{jugador.nombre}}</p>
+              <p class="card-text"><strong>Equipo Actual:</strong> {{jugador.equipoFutbol}}</p>
+            </div>
+            <div class="card-footer">              
+              <small class="text-muted"><strong>Calificación: {{ jugador.calificacion }}</strong></small>
+            </div>
+          </div>
+    </div>
+</div>

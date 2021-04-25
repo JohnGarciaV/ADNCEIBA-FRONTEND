@@ -1,0 +1,121 @@
+<div class="col d-flex justify-content-center">
+    <div class="row align-card-top">    
+        <div class="card">
+            <img src="assets/png/jugador-de-futbol.png" class="card-img-top align-img">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                    <p class="card-text"><strong>Nombre:</strong> {{jugador.nombre}}</p>
+                    <p class="card-text"><strong>Edad:</strong> {{jugador.edad}}</p>
+                    <h5 class="card-title">Valor: {{ jugador.valorizacion | currency:'$':'symbol' }}</h5>                               
+                    <p class="card-text"><strong>Equipo Actual:</strong> {{jugador.equipoFutbol}}</p>
+                    <p class="card-text"><strong>Minutos jugados:</strong> {{jugador.minutosJugados}}</p>
+                    <p class="card-text"><strong>Goles:</strong> {{jugador.goles}}</p>
+                    </div>
+                    <div class="col-6">
+                    <p class="card-text"><strong>Torneos ganados:</strong> {{jugador.torneoGanados}}</p>                   
+                    <p class="card-text"><strong>Inicio temporada:</strong> {{jugador.fechaInicioTemporada | date: 'yyyy-MM-dd'}}</p>
+                    <p class="card-text"><strong>Fin temporada:</strong> {{jugador.fechaFinTemporada | date: 'yyyy-MM-dd'}}</p>
+                    <p class="card-text"><strong>Fecha valorización:</strong> {{jugador.fechaValorizacion | date: 'yyyy-MM-dd'}}</p> 
+                    </div>
+                </div>  
+                <div class="row mt-4">
+                    <button type="button" class="btn btn-danger mr-2" (click)="regresar()" id="regresar">
+                      <i class="fa fa-undo"></i> Regresar
+                    </button>
+                    <button class="btn btn-info mr-2" title="Valorizar" data-toggle="modal" data-target="#valorizar" id="modalValorizar">
+                        <i class="fa fa-money"></i> Valorizar
+                        </button>
+                        <button class="btn btn-info" title="Calificar" data-toggle="modal" data-target="#calificar" id="modalCalificar">
+                            <i class="fa fa-star"></i> Calificar
+                        </button>
+                  </div>   
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="valorizar" tabindex="-1" role="dialog" aria-labelledby="valorizar" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Valorizar jugador</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="regresar()" id="modalValorizarVerJugadores">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Digita el nuevo valor del jugador de acuerdo a sus caracteristicas.</p>
+            <form class="form p-t-20" [formGroup]="jugadorForm" (ngSubmit)="valorizarJugador()" #ngForm="ngForm">                 
+                <div class="row">
+                    <div class="col">
+                        <label for="edad">Valorización $:</label>
+                        <input formControlName="valorizacion" name="valorizacion" id="valorizacion" type="number" class="form-control" required>
+                        <div class="form-control-feedback text-danger"
+                          *ngIf="erroresService.errores(jugadorForm, 'valorizacion', ngForm).hayErrores">
+                          Debe ingresar la valorizacion
+                        </div>                
+                      </div>
+                </div>    
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="registrarValorizar">
+              <i class="fa fa-save"></i> Registrar
+            </button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="calificar" tabindex="-1" role="dialog" aria-labelledby="calificar" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLongTitle">Calificar jugador</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="regresar()" id="modalCalificarVerJugadores">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Parámetros necesarios para realizar la calificación.</p>
+            <form class="form p-t-20" [formGroup]="calificarForm" (ngSubmit)="calificarJugador()" #ngForm="ngForm">                 
+                <div class="row">
+                  <div class="col">
+                    <label for="minutosJugados">Minutos jugados:</label>
+                    <input formControlName="minutosJugados" name="minutosJugados" id="minutosJugados" type="number" class="form-control"
+                      required>
+                    <div class="form-control-feedback text-danger"
+                      *ngIf="erroresService.errores(calificarForm, 'minutosJugados', ngForm).hayErrores">
+                      Debe ingresar los minutos jugados
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label for="torneoGanados">Torneos ganados:</label>
+                    <input formControlName="torneoGanados" name="torneoGanados" id="torneoGanados" type="number" class="form-control"
+                      required>
+                    <div class="form-control-feedback text-danger"
+                      *ngIf="erroresService.errores(calificarForm, 'torneoGanados', ngForm).hayErrores">
+                      Debe ingresar los torneos ganados
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label for="goles">Goles anotados:</label>
+                    <input formControlName="goles" name="goles" id="goles" type="number" class="form-control"
+                      required>
+                    <div class="form-control-feedback text-danger"
+                      *ngIf="erroresService.errores(calificarForm, 'goles', ngForm).hayErrores">
+                      Debe ingresar los goles anotados
+                    </div>
+                  </div>
+                </div>    
+                <div class="modal-footer align-img">
+                    <button type="submit" class="btn btn-primary" id="registrarCalificar">
+                      <i class="fa fa-save"></i> Registrar
+                    </button>
+                </div>
+             </form>
+        </div>
+      </div>    
+    </div>
+  </div>
