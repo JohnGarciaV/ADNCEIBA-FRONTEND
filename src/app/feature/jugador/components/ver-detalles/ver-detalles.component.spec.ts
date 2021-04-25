@@ -81,6 +81,8 @@ describe('VerDetallesComponent', () => {
     torneoGanados: null,
     goles: null
   });     
+
+  component.construirFormularioCliente();
     expect(component).toBeTruthy();
   });
 
