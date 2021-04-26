@@ -22,7 +22,7 @@ describe("Ver detalles", () => {
 
   it("Deberia valorar Jugador", () => {
     //arrange
-    const VALORIZACION = 5000000;
+    const VALORIZACION = 0;
    
     page.navigateTo();
     navBar.clickBotonNavBarJugadores();
@@ -45,9 +45,9 @@ describe("Ver detalles", () => {
 
   it("Deberia calificar Jugador", () => {
     //arrange
-    const MINUTOSJUGADOS = 0;
+    const MINUTOSJUGADOS = 90;
     const TORNEOSGANADOS = 0;
-    const GOLES = 0;
+    const GOLES = 3;
 
     page.navigateTo();
     navBar.clickBotonNavBarJugadores();

@@ -82,7 +82,7 @@ describe('VerDetallesComponent', () => {
     goles: null
   });     
 
-  component.construirFormularioCliente();
+   component.construirFormularioCliente();
     expect(component).toBeTruthy();
   });
 

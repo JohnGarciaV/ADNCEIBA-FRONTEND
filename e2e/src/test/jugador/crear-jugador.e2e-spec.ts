@@ -21,12 +21,12 @@ describe("Crear jugador", () => {
   it("Deberia crear Jugador", () => {
     //arrange
     const NOMBRE = "Raul";
-    const NUMEROIDENTIFICACION = 1116587;
+    const NUMEROIDENTIFICACION = 1116789;
     const EDAD = 20;
     const VALORIZACION = 5000000;
     const CALIFICACION = 0.0;
-    const FECHAINICIOTEMPORADA = "28/01/2021"; //2021-01-28
-    const FECHAFINTEMPORADA = "30/06/2021";  //2021-06-30
+    const FECHAINICIOTEMPORADA = "02/28/2021"; //2021-01-28
+    const FECHAFINTEMPORADA = "07/30/2021";  //2021-06-30
     const FECHAVALORIZACION = "13/04/2021";  //2021-04-13
     const EQUIPOFUTBOL = "Cortulua";
     const MINUTOSJUGADOS = 0;
