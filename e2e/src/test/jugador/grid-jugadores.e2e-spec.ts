@@ -1,4 +1,3 @@
-import { browser } from "protractor";
 import { AppPage } from "../../app.po";
 import { NavbarPage } from "../../page/navbar/navbar.po";
 import { GridJugadores } from "../../page/grid-jugadores/grid-jugadores.po";
@@ -17,14 +16,11 @@ describe("Listar jugadores", () => {
   it("Deberia listar Jugador", () => {
     //arrange   
     page.navigateTo();
-    navBar.clickBotonNavBarJugadores();
-    gridJugadores.clickBotonCrearJugador();
-    browser.sleep(500);   
+    navBar.clickBotonNavBarJugadores();   
     //act    
 
     //assert
-    expect(1).toBe(gridJugadores.contarJugadores());
-    browser.sleep(300);
+    expect(8).toBe(gridJugadores.contarJugadores());  
   }); 
 
 });

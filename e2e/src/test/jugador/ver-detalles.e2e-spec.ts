@@ -1,15 +1,15 @@
-import { browser } from "protractor";
 import { AppPage } from "../../app.po";
 import { NavbarPage } from "../../page/navbar/navbar.po";
 import { GridJugadores } from "../../page/grid-jugadores/grid-jugadores.po";
 import { VerDetalles } from "../../page/ver-detalles/ver-detalles.po";
-
+import { Modal } from "../../page/modal.po";
 
 describe("Ver detalles", () => {
     let page: AppPage;
     let navBar: NavbarPage;
     let gridJugadores: GridJugadores;
     let verDetalles: VerDetalles;
+    let modal: Modal;
     const VALORACION_EXISTOSA = "El jugador ha sido valorado.";
     const CALIFICACION_EXISTOSA = "El jugador ha sido calificado.";
 
@@ -18,6 +18,7 @@ describe("Ver detalles", () => {
       navBar = new NavbarPage();
       gridJugadores = new GridJugadores();
       verDetalles = new VerDetalles();
+      modal = new Modal();
     });
 
   it("Deberia valorar Jugador", () => {
@@ -25,22 +26,17 @@ describe("Ver detalles", () => {
     const VALORIZACION = 0;
    
     page.navigateTo();
-    navBar.clickBotonNavBarJugadores();
-    gridJugadores.clickVerDetalleJugador();
-    browser.sleep(500);
+    gridJugadores.clickVerDetalleJugador();    
 
-    verDetalles.clickBotonAbrirModalValorizar();
-    browser.sleep(500);    
-    verDetalles.clickInputValorizacion();
-    verDetalles.setInputValorizacion(VALORIZACION);
-    browser.sleep(500);
+    verDetalles.clickBotonAbrirModalValorizar();     
+    modal.clickInputValorizacion();
+    modal.limpiarValorizacion();
+    modal.setInputValorizacion(VALORIZACION);    
     //act   
-    verDetalles.clickBotonRegistrarValorizacion();
-    browser.sleep(500);
+    modal.clickBotonRegistrarModal();    
     //assert
     const mensaje = verDetalles.getTextoSwal();
-    expect(mensaje).toEqual(VALORACION_EXISTOSA);
-    browser.sleep(300);
+    expect(mensaje).toEqual(VALORACION_EXISTOSA);    
   });
 
   it("Deberia calificar Jugador", () => {
@@ -51,27 +47,19 @@ describe("Ver detalles", () => {
 
     page.navigateTo();
     navBar.clickBotonNavBarJugadores();
-    gridJugadores.clickVerDetalleJugador();
-    browser.sleep(500);
-    verDetalles.clickBotonAbrirModalCalificar()
-    browser.sleep(500);
-
-    verDetalles.clickInputMinutosJugados();
-    verDetalles.setInputMinutosJugados(MINUTOSJUGADOS);
-    browser.sleep(500);
-    verDetalles.clickInputTorneoGanados();
-    verDetalles.setInputTorneoGanados(TORNEOSGANADOS);
-    browser.sleep(500);
-    verDetalles.clickInputGoles()
-    verDetalles.setInputGoles(GOLES);
-    browser.sleep(500);
+    gridJugadores.clickVerDetalleJugador();    
+    verDetalles.clickBotonAbrirModalCalificar();
+    modal.clickInputMinutosJugados();
+    modal.setInputMinutosJugados(MINUTOSJUGADOS);    
+    modal.clickInputTorneoGanados();
+    modal.setInputTorneoGanados(TORNEOSGANADOS);    
+    modal.clickInputGoles()
+    modal.setInputGoles(GOLES);    
     //act   
-    verDetalles.clickBotonRegistrarCalificar();
-    browser.sleep(500);
+    modal.clickBotonRegistrarModal();    
 
     const mensaje = verDetalles.getTextoSwal();
-    expect(mensaje).toEqual(CALIFICACION_EXISTOSA);
-    browser.sleep(300);
+    expect(mensaje).toEqual(CALIFICACION_EXISTOSA);    
 
     });
       

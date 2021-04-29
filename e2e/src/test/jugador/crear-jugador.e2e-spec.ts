@@ -1,4 +1,3 @@
-import { browser } from "protractor";
 import { AppPage } from "../../app.po";
 import { NavbarPage } from "../../page/navbar/navbar.po";
 import { FormularioJugador } from "../../page/crear-jugador/formulario-jugador.po";
@@ -36,51 +35,36 @@ describe("Crear jugador", () => {
     page.navigateTo();
     navBar.clickBotonNavBarJugadores();
     gridJugadores.clickBotonCrearJugador();
-    browser.sleep(500);
-
     crearJugador.clickInputNombre();
     crearJugador.setInputNombre(NOMBRE);
-    browser.sleep(500);
     crearJugador.clickInputNumeroIdentificacion();
     crearJugador.setInputNumeroIdentificacion(NUMEROIDENTIFICACION);
-    browser.sleep(500);
     crearJugador.clickInputEdad();
     crearJugador.setInputEdad(EDAD);
-    browser.sleep(500);
     crearJugador.clickInputValorizacion();
     crearJugador.setInputValorizacion(VALORIZACION);
-    browser.sleep(500);
     crearJugador.clickInputCalificacion();
     crearJugador.setInputCalificacion(CALIFICACION);
-    browser.sleep(500);
     crearJugador.clickInputFechaInicioTemporada();
     crearJugador.setInputFechaInicioTemporada(FECHAINICIOTEMPORADA);
-    browser.sleep(500);
     crearJugador.clickInputFechaFinTemporada();
     crearJugador.setInputFechaFinTemporada(FECHAFINTEMPORADA);
-    browser.sleep(500);
     crearJugador.clickInputFechaValorizacion();
     crearJugador.setInputFechaValorizacion(FECHAVALORIZACION);
-    browser.sleep(500);
     crearJugador.clickInputEquipoFutbol();
     crearJugador.setInputEquipoFutbol(EQUIPOFUTBOL);
-    browser.sleep(500);
     crearJugador.clickInputMinutosJugados();
     crearJugador.setInputMinutosJugados(MINUTOSJUGADOS);
-    browser.sleep(500);
     crearJugador.clickInputTorneoGanados();
     crearJugador.setInputTorneoGanados(TORNEOSGANADOS);
-    browser.sleep(500);
     crearJugador.clickInputGoles()
     crearJugador.setInputGoles(GOLES);
-    browser.sleep(500);
     //act    
-    crearJugador.clickBotonRegistrarJugador()
-    browser.sleep(500);
+    crearJugador.clickBotonRegistrarJugador();
+   
     //assert
     const mensaje = crearJugador.getTextoSwal();
     expect(mensaje).toEqual(EL_JUGADOR_HA_SIDO_CREADO);
-    browser.sleep(300);
   });
       
 });

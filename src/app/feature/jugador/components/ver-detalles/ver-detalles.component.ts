@@ -57,9 +57,9 @@ export class VerDetallesComponent implements OnInit {
     });
   }
 
-  calificarJugador(){
+  calificarJugador(calificarFormExterno: FormGroup){
     if(this.calificarForm.valid){
-      this.jugadorService.calificar(this.calificarForm.value).subscribe(
+      this.jugadorService.calificar(calificarFormExterno.value).subscribe(
         () => {
           this.swalService.alert(
             EXITO,
@@ -76,10 +76,8 @@ export class VerDetallesComponent implements OnInit {
     } 
   }
 
-  valorizarJugador(){
-   // console.log('jugadorForm', this.jugadorForm);
-    if(this.jugadorForm.valid){
-      this.jugadorService.valorar(this.jugadorForm.value).subscribe(
+  valorizarJugador(valorarFormExterno: FormGroup){
+      this.jugadorService.valorar(valorarFormExterno.value).subscribe(
         () => {
           this.swalService.alert(
             EXITO,
@@ -95,9 +93,6 @@ export class VerDetallesComponent implements OnInit {
           this.swalService.alert(ERROR, error.error.mensaje, Icon.ERROR);
         }
       );
-    }else{
-      this.swalService.alert(ERROR, 'Debe diligenciar el campo valorizar', Icon.ERROR);
-    } 
   }
 
   regresar(): void {
